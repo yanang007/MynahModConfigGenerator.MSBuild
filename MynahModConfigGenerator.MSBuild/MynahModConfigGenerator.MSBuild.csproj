@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1;net472</TargetFrameworks>
+    <DebugType>embedded</DebugType>
+    
+    <PackageId>MynahModConfigGenerator.MSBuild</PackageId>
+    <Version>1.0.0</Version>
+    <Description>MSBuild integration for MynahModConfigGenerator</Description>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.11.4" PrivateAssets="all"  />
+    <PackageReference Include="NuGet.Build.Tasks.Pack" Version="6.11.0" PrivateAssets="all" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="..\readme.md" Pack="true" PackagePath="\"/>
+    <Content Include="$(MSBuildProjectName).props" Pack="true" PackagePath="build" />
+  </ItemGroup>
+
+  <Target Name="CopyGenerator" AfterTargets="Build">
+    <ItemGroup>
+      <Files Include="..\MynahTaiwuMods\MynahModConfigGenerator\$(BaseOutputPath)\$(Configuration)\**" />
+      <TfmSpecificPackageFile Include="@(Files)" PackagePath="lib" Condition="'$(TargetFramework)' != 'net472'" />
+
+      <TfmSpecificPackageFile Include="..\MynahTaiwuMods\MynahModConfigGenerator\$(BaseOutputPath)\$(Configuration)\net6.0\MynahBaseModBase.dll" PackagePath="lib/$(TargetFramework.ToLowerInvariant())" />
+    </ItemGroup>
+  </Target>
+</Project>
