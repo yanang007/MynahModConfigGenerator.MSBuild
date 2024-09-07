@@ -7,10 +7,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MynahModConfigGenerator", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MynahBaseModBase", "MynahTaiwuMods\MynahBaseModBase\MynahBaseModBase.csproj", "{CA337CA5-83F1-447D-A72B-2588AD21045F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MynahModConfigGenerator.MSBuild", "MynahModConfigGenerator.MSBuild\MynahModConfigGenerator.MSBuild.csproj", "{33674587-9B74-4464-8038-AA3744A21F9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MynahModConfigGenerator.MSBuild", "MynahModConfigGenerator.MSBuild\MynahModConfigGenerator.MSBuild.csproj", "{33674587-9B74-4464-8038-AA3744A21F9F}"
 	ProjectSection(ProjectDependencies) = postProject
 		{A1F7E4BC-8140-4FE2-9B1F-1942EB4454C0} = {A1F7E4BC-8140-4FE2-9B1F-1942EB4454C0}
+		{AAB7D8C1-925E-4760-B5CE-2B9D2A78364D} = {AAB7D8C1-925E-4760-B5CE-2B9D2A78364D}
+		{B424CA89-6662-459F-9471-E97A748C1948} = {B424CA89-6662-459F-9471-E97A748C1948}
+		{CA337CA5-83F1-447D-A72B-2588AD21045F} = {CA337CA5-83F1-447D-A72B-2588AD21045F}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MynahBaseModFrontend", "MynahTaiwuMods\MynahBaseModFrontend\MynahBaseModFrontend.csproj", "{B424CA89-6662-459F-9471-E97A748C1948}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MynahBaseModBackend", "MynahTaiwuMods\MynahBaseModBackend\MynahBaseModBackend.csproj", "{AAB7D8C1-925E-4760-B5CE-2B9D2A78364D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +37,14 @@ Global
 		{33674587-9B74-4464-8038-AA3744A21F9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33674587-9B74-4464-8038-AA3744A21F9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33674587-9B74-4464-8038-AA3744A21F9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B424CA89-6662-459F-9471-E97A748C1948}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B424CA89-6662-459F-9471-E97A748C1948}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B424CA89-6662-459F-9471-E97A748C1948}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B424CA89-6662-459F-9471-E97A748C1948}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAB7D8C1-925E-4760-B5CE-2B9D2A78364D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAB7D8C1-925E-4760-B5CE-2B9D2A78364D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAB7D8C1-925E-4760-B5CE-2B9D2A78364D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAB7D8C1-925E-4760-B5CE-2B9D2A78364D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

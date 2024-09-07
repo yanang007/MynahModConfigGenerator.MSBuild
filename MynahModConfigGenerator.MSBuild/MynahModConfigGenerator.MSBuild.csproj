@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1;net472</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1;net472;net6.0</TargetFrameworks>
     <DebugType>embedded</DebugType>
     
     <PackageId>MynahModConfigGenerator.MSBuild</PackageId>
@@ -10,6 +10,9 @@
     
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  
+    <BaseModPrefix>..\MynahTaiwuMods\MynahBaseMod</BaseModPrefix>
+    <NoWarn>$(NoWarn);NU5100</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,10 +27,13 @@
 
   <Target Name="CopyGenerator" AfterTargets="Build">
     <ItemGroup>
-      <Files Include="..\MynahTaiwuMods\MynahModConfigGenerator\$(BaseOutputPath)\$(Configuration)\**" />
-      <TfmSpecificPackageFile Include="@(Files)" PackagePath="lib" Condition="'$(TargetFramework)' != 'net472'" />
-
-      <TfmSpecificPackageFile Include="..\MynahTaiwuMods\MynahModConfigGenerator\$(BaseOutputPath)\$(Configuration)\net6.0\MynahBaseModBase.dll" PackagePath="lib/$(TargetFramework.ToLowerInvariant())" />
+      <!-- 此处可以不必使用 $(TargetFramework.ToLowerInvariant()) -->
+      <TfmSpecificPackageFile Include="..\MynahTaiwuMods\MynahModConfigGenerator\$(BaseOutputPath)\$(Configuration)\$(TargetFramework)\*" PackagePath="gen" />
+      
+      <BaseModDeps Include="$(BaseModPrefix)Base\$(BaseOutputPath)\$(Configuration)\*.dll" />
+      <BaseModDeps Include="$(BaseModPrefix)Frontend\$(BaseOutputPath)\$(Configuration)\*.dll" />
+      <BaseModDeps Include="$(BaseModPrefix)Backend\$(BaseOutputPath)\$(Configuration)\net6.0\*.dll" Condition="'$(TargetFramework)' == 'net6.0'" />
+      <TfmSpecificPackageFile Include="@(BaseModDeps)" PackagePath="lib/$(TargetFramework.ToLowerInvariant())" />
     </ItemGroup>
   </Target>
 </Project>

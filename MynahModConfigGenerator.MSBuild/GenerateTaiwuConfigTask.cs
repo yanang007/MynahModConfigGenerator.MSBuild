@@ -33,16 +33,20 @@ namespace ConfigGenerator
                 }
             }
 
-            string generatorPath = Assembly.GetAssembly(typeof(GenerateTaiwuConfigTask)).Location.Parent().Parent() + "\\net6.0\\MynahModConfigGenerator.exe";
+            string generatorPath = Assembly.GetAssembly(typeof(GenerateTaiwuConfigTask)).Location.Parent().Parent().Parent() + "\\gen\\MynahModConfigGenerator.exe";
             if (generatorPath == null)
             {
                 return false;
             }
 
-            IEnumerable<string> args = new string[] { ConfigLuaPath };
-            args = args.Concat(TargetDlls);
+            IEnumerable<string> args = new string[] { ConfigLuaPath }.Concat(TargetDlls);
 
-            Process p = Process.Start(generatorPath, args.Select(WrapParam).Join(" "));
+            Process p = Process.Start(new ProcessStartInfo
+            {
+                FileName=generatorPath,
+                Arguments=args.Select(WrapParam).Join(" "),
+                UseShellExecute=false,
+            });
             p.WaitForExit();
 
             return true;
