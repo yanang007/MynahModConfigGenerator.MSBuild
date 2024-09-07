@@ -8,7 +8,7 @@ TaiwuConfigGenerator
 ## 使用方式
 
 1. 在项目中引入依赖。
-```
+```xml
   <ItemGroup>
     <PackageReference Include="TaiwuConfigGenerator" Version="1.0.0">
       <PrivateAssets>all</PrivateAssets>
@@ -17,7 +17,7 @@ TaiwuConfigGenerator
 ```
 
 2. 配置项目发布路径，将Config.lua和生成的plugin dll拷贝到发布路径，例如（其中GameDir需替换为你的游戏安装路径）：
-```
+```xml
   <PropertyGroup>
     <OutputDir>.\Mod\</OutputDir>
   </PropertyGroup>
@@ -30,7 +30,7 @@ TaiwuConfigGenerator
 ```
 
 3. 通过`GenerateTaiwuConfigTask`任务注入配置描述信息，例如：
-```
+```xml
   <Target Name="GenerateConfig" AfterTargets="Build">
     <GenerateTaiwuConfigTask PluginDir="$(OutputDir)" />
   </Target>
@@ -65,6 +65,6 @@ dotnet build --configuration Release
 
 ## 致谢
 
-[MynahModConfigGenerator](https://github.com/12548/MynahTaiwuMods/tree/develop/MynahModConfigGenerator)：实现了根据代码注解自动生成配置文件。
+[MynahModConfigGenerator](https://github.com/12548/MynahTaiwuMods/tree/develop/MynahModConfigGenerator)：一个太吾绘卷Mod配置文件自动生成器，是本项目的基础。
 
-[BepInEx.AssemblyPublicizer.MSBuild](https://github.com/BepInEx/BepInEx.AssemblyPublicizer/tree/master/BepInEx.AssemblyPublicizer.MSBuild)：将AssemblyPublicizer打包为NuGet包实现快速引入。
+[BepInEx.AssemblyPublicizer.MSBuild](https://github.com/BepInEx/BepInEx.AssemblyPublicizer/tree/master/BepInEx.AssemblyPublicizer.MSBuild)：一个用于将assembly中私有成员重写为公开可见性的NuGet包，本项目参考了其编译与构建配置。
