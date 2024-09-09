@@ -1,7 +1,7 @@
 ﻿<Project>
     <PropertyGroup>
-        <ConfigGenerator_TaskFolder Condition="'$(MSBuildRuntimeType)' == 'Core'">netstandard2.1</ConfigGenerator_TaskFolder>
-        <ConfigGenerator_TaskFolder Condition="'$(MSBuildRuntimeType)' != 'Core'">net472</ConfigGenerator_TaskFolder>
+        <ConfigGenerator_TaskFolder Condition="'$(MSBuildRuntimeType)' == 'Core'">net6.0</ConfigGenerator_TaskFolder>
+        <ConfigGenerator_TaskFolder Condition="'$(MSBuildRuntimeType)' != 'Core'">net48</ConfigGenerator_TaskFolder>
         <ConfigGenerator_TaskAssembly>$(MSBuildThisFileDirectory)..\lib\$(ConfigGenerator_TaskFolder)\$(MSBuildThisFileName).dll</ConfigGenerator_TaskAssembly>
     </PropertyGroup>
 

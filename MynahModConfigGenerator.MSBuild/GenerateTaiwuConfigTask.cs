@@ -33,7 +33,7 @@ namespace ConfigGenerator
                 }
             }
 
-            string generatorPath = Assembly.GetAssembly(typeof(GenerateTaiwuConfigTask)).Location.Parent().Parent().Parent() + "\\gen\\MynahModConfigGenerator.exe";
+            string generatorPath = Assembly.GetAssembly(typeof(GenerateTaiwuConfigTask)).Location.Parent().Parent().Parent() + "\\tools\\MynahModConfigGenerator.exe";
             if (generatorPath == null)
             {
                 return false;
